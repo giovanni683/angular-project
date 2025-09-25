@@ -34,7 +34,12 @@ jobs:
         run: cd server && npm install
       - name: Install dependencies (frontend)
         run: cd client && npm install
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          sudo ln -sf /usr/bin/chromium-browser /usr/bin/google-chrome
       - name: Run backend tests
         run: cd server && npm test
       - name: Run frontend tests
-        run: cd client && npx ng test --watch=false
+        run: cd client && npx ng test --browsers=ChromeHeadless --watch=false
