@@ -5,7 +5,7 @@ describe('Auth Endpoints', () => {
   it('should login with correct credentials', async () => {
     const res = await request(app)
       .post('/auth/login')
-      .send({ email: 'admin@email.com', password: 'admin123' });
+      .send({ email: 'teste@teste.com', password: '123456' });
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('token');
   });
