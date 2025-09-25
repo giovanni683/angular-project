@@ -1,0 +1,23 @@
+<div class="task-detail-container">
+	<h2>Detalhes da Tarefa</h2>
+	<div *ngIf="loading">Carregando...</div>
+	<div *ngIf="error" style="color: red;">{{ error }}</div>
+	<div *ngIf="!loading && task">
+		<strong>{{ task.title }}</strong><br />
+		<span>{{ task.description }}</span><br />
+		<span>Responsável: {{ task.assignedTo }}</span>
+		<h3>Comentários</h3>
+		<ul>
+			<li *ngFor="let comment of comments">
+				<strong>{{ comment.author }}:</strong> {{ comment.content }}
+			</li>
+		</ul>
+			<div *ngIf="!comments.length">Nenhum comentário.</div>
+			<form (ngSubmit)="addComment()" style="margin-top: 16px;">
+				<label>Novo comentário:</label><br />
+				<textarea [(ngModel)]="newComment" name="newComment" rows="2" required></textarea><br />
+				<button type="submit">Adicionar</button>
+			</form>
+			<div *ngIf="commentError" style="color: red;">{{ commentError }}</div>
+	</div>
+</div>

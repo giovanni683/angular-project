@@ -1,0 +1,60 @@
+.dashboard-container {
+	// ...existing code...
+}
+
+button[mat-raised-button], button[mat-stroked-button] {
+	background: #1976d2 !important;
+	color: #fff !important;
+	border: none;
+	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+}
+button[mat-stroked-button] {
+	background: #fff !important;
+	color: #1976d2 !important;
+	border: 2px solid #1976d2 !important;
+}
+
+.dashboard-container {
+	max-width: 650px;
+	margin: 40px auto;
+}
+
+mat-card {
+	padding: 32px 24px;
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+	background: #fff;
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: 500;
+	margin-bottom: 24px;
+	color: #1976d2;
+	letter-spacing: 0.5px;
+}
+
+.task-form {
+	margin-bottom: 32px;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.error {
+	color: #d32f2f;
+	margin-top: 8px;
+}
+
+mat-list-item {
+	margin-bottom: 12px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 8px;
+	padding-top: 12px;
+}
+
+mat-toolbar {
+	font-family: 'Roboto', Arial, sans-serif;
+}
+

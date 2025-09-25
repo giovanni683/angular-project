@@ -1,0 +1,40 @@
+
+<mat-toolbar style="background: #1976d2; color: #fff;">
+	<span>Task Manager</span>
+</mat-toolbar>
+
+<div class="dashboard-container">
+	<mat-card>
+		<h2>Minhas Tarefas</h2>
+		<div *ngIf="loading">Carregando...</div>
+		<div *ngIf="error" class="error">{{ error }}</div>
+		<form (ngSubmit)="addTask()" class="task-form">
+			<h3>Criar nova tarefa</h3>
+			<mat-form-field appearance="outline" class="full-width">
+				<mat-label>Título</mat-label>
+				<input matInput [(ngModel)]="newTitle" name="newTitle" required />
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="full-width">
+				<mat-label>Descrição</mat-label>
+				<input matInput [(ngModel)]="newDescription" name="newDescription" />
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="full-width">
+				<mat-label>Responsável</mat-label>
+				<input matInput [(ngModel)]="newAssignedTo" name="newAssignedTo" required />
+			</mat-form-field>
+			<button mat-raised-button color="primary" type="submit">Criar</button>
+			<div *ngIf="taskError" class="error">{{ taskError }}</div>
+		</form>
+					<mat-list *ngIf="!loading && tasks.length">
+						<mat-list-item *ngFor="let task of tasks" style="padding-top:16px;">
+							<mat-icon matListIcon>assignment</mat-icon>
+							<div matLine><strong>{{ task.title }}</strong> - {{ task.description }}</div>
+							<div matLine>Responsável: {{ task.assignedTo }}</div>
+							<div style="margin-top:8px;">
+								<button mat-raised-button color="primary" [routerLink]="['/task', task.id]">Detalhes</button>
+							</div>
+						</mat-list-item>
+					</mat-list>
+		<div *ngIf="!loading && !tasks.length">Nenhuma tarefa encontrada.</div>
+	</mat-card>
+</div>
